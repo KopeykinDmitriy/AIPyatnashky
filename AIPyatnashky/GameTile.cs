@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace AIPyatnashky
 {
@@ -18,6 +19,16 @@ namespace AIPyatnashky
         {
             TileNumber= tileNumber;
             TileButton= tileButton;
+        }
+
+        public void InitTile()
+        {
+            if (TileNumber == 0)
+                TileButton.Text = "";
+            else
+                TileButton.Text = Convert.ToString(TileNumber);
+            TileButton.Font = new System.Drawing.Font("Times New Roman", 60);
+
         }
     }
 }

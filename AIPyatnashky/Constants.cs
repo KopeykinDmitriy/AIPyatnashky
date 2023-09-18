@@ -1,4 +1,6 @@
-﻿namespace AIPyatnashky
+﻿using System.Windows.Forms;
+
+namespace AIPyatnashky
 {
     public static class Constants
     {

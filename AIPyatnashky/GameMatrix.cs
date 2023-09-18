@@ -4,6 +4,11 @@
     {
         public GameTile[] GameTileMatrix;
 
+        public GameMatrix(GameTile[] gameTileMatrix) 
+        {
+            GameTileMatrix = gameTileMatrix;
+        }
+
         public GameTile[] GetTileMatrix()
         {
             return GameTileMatrix;
@@ -18,9 +23,14 @@
         public void SwapTiles(int idA, int idB)
         {
             if ((idA < 0) || (idB < 0)) return;
-            var tempGameTile = GameTileMatrix[idA];
-            GameTileMatrix[idA] = GameTileMatrix[idB];
-            GameTileMatrix[idB] = tempGameTile;
+            (GameTileMatrix[idB].TileNumber, GameTileMatrix[idA].TileNumber) = 
+                (GameTileMatrix[idA].TileNumber, GameTileMatrix[idB].TileNumber);
+        }
+
+        public void InitTiles()
+        {
+            foreach(var tile in GameTileMatrix)
+                tile.InitTile(); 
         }
     }
 }

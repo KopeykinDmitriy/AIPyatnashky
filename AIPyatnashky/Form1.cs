@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 namespace AIPyatnashky
 {
@@ -7,6 +8,11 @@ namespace AIPyatnashky
         public Form1()
         {
             InitializeComponent();
+
+            var buttons = new Button[] { this.button1, this.button2, this.button3,
+                                         this.button4, this.button5, this.button6,
+                                         this.button7, this.button8, this.button9};
+            var mainGame = new MainGame(buttons);
         }
     }
 }
