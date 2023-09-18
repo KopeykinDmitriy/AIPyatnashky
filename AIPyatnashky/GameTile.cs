@@ -27,8 +27,8 @@ namespace AIPyatnashky
                 TileButton.Text = "";
             else
                 TileButton.Text = Convert.ToString(TileNumber);
-            TileButton.Font = new System.Drawing.Font("Times New Roman", 60);
 
+            TileButton.Font = new System.Drawing.Font("Times New Roman", 60);
         }
     }
 }

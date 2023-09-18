@@ -11,6 +11,7 @@ namespace AIPyatnashky
     public class MainGame
     {
         public Button[] Buttons;
+        public GameMatrix GameMatrix { get; set; }
         public MainGame(Button[] buttons) 
         {
             Buttons = buttons;
@@ -20,11 +21,13 @@ namespace AIPyatnashky
             RandomMatrix(gameMatrix);
 
             Update(gameMatrix);
+
+            GameMatrix = gameMatrix;
         }
 
         public GameMatrix InitializeMatrix() 
         {
-            var gameTiles = new GameTile[Constants.DIMENSION * Constants.DIMENSION];
+            var gameTiles = new List<GameTile>(Constants.DIMENSION * Constants.DIMENSION);
             for (int i = 0; i < Constants.DIMENSION * Constants.DIMENSION; i++)
             {
                 gameTiles[i] = new GameTile(i, Buttons[i]);

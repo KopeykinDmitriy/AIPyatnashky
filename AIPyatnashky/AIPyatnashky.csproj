@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="GameMatrix.cs" />
     <Compile Include="GameTile.cs" />
+    <Compile Include="MainAlgorythm.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
