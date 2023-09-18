@@ -21,6 +21,12 @@ namespace AIPyatnashky
             TileButton= tileButton;
         }
 
+        public GameTile(GameTile gameTile)
+        {
+            TileNumber= gameTile.TileNumber;
+            TileButton= gameTile.TileButton;
+        }
+
         public void InitTile()
         {
             if (TileNumber == 0)

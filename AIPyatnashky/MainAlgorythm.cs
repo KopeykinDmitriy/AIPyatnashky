@@ -17,9 +17,9 @@ namespace AIPyatnashky
             gameMatrices.Add(gameMatrix);
         }
 
-        public void CreateNewMatrices()
+        public void CreateNewMatrices(GameMatrix gameMatrix)
         {
-
+            
         }
     }
 }

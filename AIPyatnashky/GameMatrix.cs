@@ -15,6 +15,17 @@ namespace AIPyatnashky
             GameTileMatrix = gameTileMatrix;
         }
 
+        public GameMatrix(GameMatrix gameMatrix)
+        {
+            Height = gameMatrix.Height + 1;
+            GameTileMatrix = new List<GameTile>();
+            foreach (var tile in gameMatrix.GameTileMatrix)
+            {
+                var newTile = new GameTile(tile);
+                GameTileMatrix.Add(newTile);
+            }
+        }
+
         public List<GameTile> GetTileMatrix()
         {
             return GameTileMatrix;
