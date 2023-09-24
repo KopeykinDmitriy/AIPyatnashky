@@ -10,6 +10,8 @@ namespace AIPyatnashky
 
         public int Diff { get; set; }
 
+        public bool isUsed { get; set; }
+
         public GameMatrix(List<GameTile> gameTileMatrix) 
         {
             GameTileMatrix = gameTileMatrix;
@@ -18,6 +20,18 @@ namespace AIPyatnashky
         public GameMatrix(GameMatrix gameMatrix)
         {
             Height = gameMatrix.Height + 1;
+            GameTileMatrix = new List<GameTile>();
+            foreach (var tile in gameMatrix.GameTileMatrix)
+            {
+                var newTile = new GameTile(tile);
+                GameTileMatrix.Add(newTile);
+            }
+        }
+
+        public GameMatrix(GameMatrix gameMatrix, int a)
+        {
+            Height = gameMatrix.Height + 1;
+            Diff = gameMatrix.Diff;
             GameTileMatrix = new List<GameTile>();
             foreach (var tile in gameMatrix.GameTileMatrix)
             {
@@ -37,7 +51,7 @@ namespace AIPyatnashky
                 GameTileMatrix = gameTileMatrix;
         }
 
-        public void SwapTiles(int idA, int idB)
+        private void SwapTiles(int idA, int idB)
         {
             if ((idA < 0) || (idB < 0)) return;
             (GameTileMatrix[idB].TileNumber, GameTileMatrix[idA].TileNumber) = 
@@ -57,16 +71,19 @@ namespace AIPyatnashky
             {
                 if (GameTileMatrix[i].TileNumber != i + 1) diff++;
             }
-            if (GameTileMatrix[Constants.DIMENSION * Constants.DIMENSION].TileNumber != 0)
+            if (GameTileMatrix[Constants.DIMENSION * Constants.DIMENSION - 1].TileNumber != 0)
                 diff++;
             Diff = diff;
         }
 
         public bool Equals(GameMatrix gameMatrix)
         {
-            if (this.GameTileMatrix.Equals(gameMatrix.GameTileMatrix))
-                return true;
-            return false;
+            for (int i = 0; i < Constants.DIMENSION * Constants.DIMENSION; i++)
+                if (GameTileMatrix[i].TileNumber != gameMatrix.GameTileMatrix[i].TileNumber)
+                {
+                    return false;
+                }
+            return true;
         }
 
         public void LeftTurn()

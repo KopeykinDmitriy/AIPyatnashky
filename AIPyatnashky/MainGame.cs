@@ -28,10 +28,11 @@ namespace AIPyatnashky
         public GameMatrix InitializeMatrix() 
         {
             var gameTiles = new List<GameTile>(Constants.DIMENSION * Constants.DIMENSION);
-            for (int i = 0; i < Constants.DIMENSION * Constants.DIMENSION; i++)
+            for (int i = 0; i < Constants.DIMENSION * Constants.DIMENSION - 1; i++)
             {
-                gameTiles[i] = new GameTile(i, Buttons[i]);
+                gameTiles.Add(new GameTile(i + 1, Buttons[i]));
             }
+            gameTiles.Add(new GameTile(0, Buttons[8]));
             var gameMatrix = new GameMatrix(gameTiles);
             return gameMatrix;
         }
@@ -43,13 +44,28 @@ namespace AIPyatnashky
 
         public void RandomMatrix(GameMatrix gameMatrix)
         {
-            for (int i = 1; i <= 20; i++)
+            for (int i = 1; i <= 50; i++)
             {
                 Thread.Sleep(10);
                 var a = new Random();
-                Thread.Sleep(10);
-                var b = new Random();
-                gameMatrix.SwapTiles(a.Next(9), b.Next(9));
+                var turn = a.Next(1, 5);
+                switch(turn)
+                {
+                    case 1:
+                        gameMatrix.DownTurn();
+                        break;
+                    case 2:
+                        gameMatrix.UpTurn();
+                        break;
+                    case 3:
+                        gameMatrix.LeftTurn();
+                        break;
+                    case 4: 
+                        gameMatrix.RightTurn();
+                        break;
+                    default:
+                        throw new Exception();
+                }
             }
         }
     }
